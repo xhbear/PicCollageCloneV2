@@ -1,83 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.HomeFragment">
+    tools:context=".ui.HomeFragment"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/stock_photo_sparkling">
 
-    <include
-        android:id="@+id/home_toolbar"
-        layout="@layout/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B3FFFFFF">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:navigationIcon="@drawable/ic_baseline_menu_24"
+            app:menu="@menu/toolbar_home_menu"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <Button
         android:id="@+id/selectImage_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/home_toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="112dp"
         android:backgroundTint="@color/secondaryLightColor"
-        android:drawableLeft="@drawable/ic_baseline_image_24"
+        android:drawableStart="@drawable/ic_baseline_image_24"
         android:text="選擇照片"
         android:textColor="@color/primaryColor"
         />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bottom_navigation"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_gravity="bottom"
+        app:navigationIcon="@drawable/ic_baseline_photo_library_24"
+        app:menu="@menu/bottom_navigation_menu"
+        android:backgroundTint="#B3FFFFFF"
+        />
 
-        <Button
-            android:id="@+id/button_toCollage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="我的拼貼本"
-            android:drawableTop="@drawable/ic_baseline_photo_library_24"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="@color/primaryTextColor"
-            />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/home_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/ic_baseline_add_circle_24"
+        app:layout_anchor="@id/bottomAppbar"
+        app:layout_anchorGravity="center_horizontal"
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button_toCollage"
-            app:layout_constraintEnd_toStartOf="@id/button_toStore"
-
-            android:src="@drawable/ic_baseline_add_circle_24"
-
-            />
-
-        <Button
-            android:id="@+id/button_toStore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@drawable/ic_baseline_storefront_24"
-            android:text="商店"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:textColor="@color/primaryTextColor"
-            />
+        />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,6 +3,7 @@ package com.hfad.piccollageclonev2.ui
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,25 +32,33 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        binding.homeToolbar.pageTitle.text = "PicCollage Clone"
-
-        binding.homeToolbar.pageTitle.setOnClickListener {
+        // topBar setup
+        val topBar = binding.topBar
+        topBar.title = "PicCollage Clone"
+        topBar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_menuFragment)
         }
-
-        val toolbar = binding.homeToolbar.root
-        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24)
-        toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_menuFragment)
-        }
-        toolbar.inflateMenu(R.menu.toolbar_home_menu)
-        toolbar.setOnMenuItemClickListener {
+        topBar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.VIP ->
                     findNavController().navigate(R.id.action_homeFragment_to_VIP_Store)
             }
             false
         }
+
+        // bottomBar setup
+        val bottomBar = binding.bottomAppbar
+        bottomBar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_collageFragment)
+        }
+        bottomBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.openStore ->
+                    findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
+            }
+            false
+        }
+
         pickMultipleMediaLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 val uris = it.data?.clipData ?: return@registerForActivityResult
@@ -60,30 +69,23 @@ class HomeFragment : Fragment() {
                 }
             }
 
+        // fab setup
+        val fab = binding.homeFab
+        fab.setOnClickListener {
+            pickMultipleMediaLauncher.launch(
+                Intent(MediaStore.ACTION_PICK_IMAGES)
+                    .apply {
+                        putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, 5)
+                    })
+        }
+
+        // same function with the fab
         binding.selectImageButton.setOnClickListener {
             pickMultipleMediaLauncher.launch(
                 Intent(MediaStore.ACTION_PICK_IMAGES)
                     .apply {
                         putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, 5)
-                    }
-            )
-        }
-
-        binding.buttonToCollage.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_collageFragment)
-        }
-
-        binding.imageButton.setOnClickListener {
-            pickMultipleMediaLauncher.launch(
-                Intent(MediaStore.ACTION_PICK_IMAGES)
-                    .apply {
-                        putExtra(MediaStore.EXTRA_PICK_IMAGES_MAX, 5)
-                    }
-            )
-        }
-
-        binding.buttonToStore.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
+                    })
         }
 
         return view
