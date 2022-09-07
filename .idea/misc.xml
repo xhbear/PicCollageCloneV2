@@ -11,6 +11,9 @@
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/layout/fragment_v_i_p__store.xml" value="0.10260416666666666" />
+        <entry key="app/src/main/res/layout/home_menu.xml" value="0.1506172839506173" />
+        <entry key="app/src/main/res/layout/home_menu_dialog.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/menu_child_card.xml" value="0.1506172839506173" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.10260416666666666" />
         <entry key="app/src/main/res/menu/toolbar_home_menu.xml" value="0.1" />

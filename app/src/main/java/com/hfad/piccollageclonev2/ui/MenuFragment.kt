@@ -22,10 +22,8 @@ class MenuFragment : Fragment() {
         _binding = HomeMenuDialogBinding.inflate(inflater, container, false)
         val view = binding.root
 
-        val menuToolbar = binding.menuToolbar
-        menuToolbar.pageTitle.text = "選單"
-        menuToolbar.root.setNavigationIcon(R.drawable.ic_baseline_cancel_24)
-        menuToolbar.root.setNavigationOnClickListener {
+        val menuToolbar = binding.topBar
+        menuToolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_homeFragment)
         }
 
