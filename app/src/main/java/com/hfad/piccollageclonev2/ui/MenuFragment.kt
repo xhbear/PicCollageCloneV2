@@ -27,6 +27,11 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_homeFragment)
         }
 
+        // experiment
+        binding.vip.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_experimentFragment)
+        }
+
         return view
     }
 

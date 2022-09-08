@@ -49,6 +49,12 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_menuFragment_to_experimentFragment"
+            app:destination="@id/experimentFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true" />
     </fragment>
     <fragment
         android:id="@+id/collageFragment"
@@ -86,4 +92,9 @@
             app:popUpToInclusive="true"
             app:launchSingleTop="true" />
     </fragment>
+    <fragment
+        android:id="@+id/experimentFragment"
+        android:name="com.hfad.piccollageclonev2.ui.ExperimentFragment"
+        android:label="fragment_experiment"
+        tools:layout="@layout/fragment_experiment" />
 </navigation>
