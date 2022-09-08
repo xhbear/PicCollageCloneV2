@@ -10,7 +10,7 @@ Be able to load up user image and video files and create a collage with basic ed
 - drag and drop rearrangement 
 - ability to export PNG and mp4 format files
 - ability to save drafts for future editing
-
+- search function for loading up hot dank memes into preset templates
 
 ## Expected behaviour
 
@@ -22,3 +22,4 @@ Be able to load up user image and video files and create a collage with basic ed
 - [x] Implement Gallery access
 - [ ] Preset layouts
 - [ ] User-guided layout pattern changes
+- [ ] Dank memes search bar
